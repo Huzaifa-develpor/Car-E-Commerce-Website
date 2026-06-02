@@ -8,6 +8,7 @@ node_modules/
 .env.test
 .env.production
 
+
 # Logs
 logs/
 *.log
@@ -21,24 +22,52 @@ pids
 *.seed
 *.pid.lock
 
-# Coverage reports
-coverage/
 
-# Build output (if any)
+# Coverage / testing
+coverage/
+.nyc_output
+
+# Build output
 dist/
 build/
+out/
+.next/
+.nuxt/
+.output/
+.vuepress/dist/
+.svelte-kit/
+.docusaurus/
+.fusebox/
+.serverless/
+
+# Cache
+.cache/
+.parcel-cache/
+.vite/
+.eslintcache
+.stylelintcache
 
 # OS files
 .DS_Store
 Thumbs.db
 
+>>>>>>> 1444538 (final cleanup after merge)
 # Editor files
 .vscode/
 .idea/
 
-# Optional
-.tmp/
-.cache/
 
-# MongoDB local dump (if used)
-dump/
+# Temporary
+.tmp/
+
+# Reports
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+# Yarn / npm
+.yarn-integrity
+.pnpm-debug.log*
+
+# Optional tools
+.npm
+.node_repl_history
+>>>>>>> 1444538 (final cleanup after merge)
