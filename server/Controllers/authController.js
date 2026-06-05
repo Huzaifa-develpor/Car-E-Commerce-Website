@@ -2,7 +2,7 @@ const authModel = require('../Models/authModel')
 const getToken = require('../Services/authService')
 const orderModel = require('../Models/orderModel')
 
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcryptjs')
 
 const registerUser= async (req, res)=>{
     const userData= req.body
