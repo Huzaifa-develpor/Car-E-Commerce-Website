@@ -18,7 +18,7 @@ export default function Orders() {
 const token=localStorage.getItem("token");
 
 useEffect(() => {
-  axios.get("http://localhost:5000/web/api/auth/vieworders", {
+  axios.get("https://car-e-commerce-website-production.up.railway.app/web/api/auth/vieworders", {
     headers: {
       Authorization: `Bearer ${token}`
     }
@@ -44,7 +44,7 @@ useEffect(() => {
 
   // Update status
   function updateStatus(id, newStatus) {
-  axios.put(`http://localhost:5000/web/api/auth/updatestatus/${id}`, { status: newStatus }, {
+  axios.put(`https://car-e-commerce-website-production.up.railway.app/web/api/auth/updatestatus/${id}`, { status: newStatus }, {
     headers: {
       Authorization: `Bearer ${token}`
     }

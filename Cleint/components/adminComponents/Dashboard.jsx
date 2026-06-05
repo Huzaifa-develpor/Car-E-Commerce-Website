@@ -62,7 +62,7 @@ export default function Dashboard() {
       const token = localStorage.getItem("token");
 
       const response = await axios.get(
-        "http://localhost:5000/web/api/auth/dashboardstats",
+        "https://car-e-commerce-website-production.up.railway.app/web/api/auth/dashboardstats",
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -84,7 +84,7 @@ export default function Dashboard() {
       const token = localStorage.getItem("token");
 
       const response = await axios.get(
-        "http://localhost:5000/web/api/auth/vieworders",
+        "https://car-e-commerce-website-production.up.railway.app/web/api/auth/vieworders",
         {
           headers: {
             Authorization: `Bearer ${token}`,

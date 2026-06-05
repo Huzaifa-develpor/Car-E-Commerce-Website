@@ -22,7 +22,7 @@ const Cart = () => {
         }
 
         const response = await axios.get(
-          'http://localhost:5000/web/api/auth/getcart',
+          'https://car-e-commerce-website-production.up.railway.app/web/api/auth/getcart',
           {
             headers: {
               Authorization: `Bearer ${token}`
@@ -58,7 +58,7 @@ const Cart = () => {
     try {
       const token = localStorage.getItem('token');
       await axios.delete(
-        `http://localhost:5000/web/api/auth/removeitem/${productId}`,
+        `https://car-e-commerce-website-production.up.railway.app/web/api/auth/removeitem/${productId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`

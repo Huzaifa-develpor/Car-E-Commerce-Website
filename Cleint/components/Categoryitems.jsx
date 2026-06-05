@@ -10,7 +10,7 @@ const CategoryItems = () => {
   const [categoryItems, setCategoryItems] = useState([]);
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/web/api/products/category/${name}`)
+    axios.get(`https://car-e-commerce-website-production.up.railway.app/web/api/products/category/${name}`)
       .then((res) => {
         setCategoryItems(res.data.categoryItems);
       })

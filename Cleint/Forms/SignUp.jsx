@@ -24,7 +24,7 @@ const SignUp = () => {
   const handleSignUp = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:5000/web/api/auth/register", signUpData);
+      const res = await axios.post("https://car-e-commerce-website-production.up.railway.app/web/api/auth/register", signUpData);
       console.log(res.data);
       if (res.data.message === 'User registered') {
         navigate("/login")

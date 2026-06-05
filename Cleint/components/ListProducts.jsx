@@ -16,7 +16,7 @@ const ListProducts = () => {
 
   const fetchProducts = async () => {
     const res = await axios.get(
-      `http://localhost:5000/web/api/products/search/${model}`
+      `https://car-e-commerce-website-production.up.railway.app/web/api/products/search/${model}`
     )
     setProducts(res.data.cars || [])
   }
@@ -25,7 +25,7 @@ const ListProducts = () => {
   const addToCart = async (id) => {
     const cartItem = { productId: id }
     axios.post(
-      'http://localhost:5000/web/api/auth/addtocart',
+      'https://car-e-commerce-website-production.up.railway.app/web/api/auth/addtocart',
       cartItem,
       {
         headers: {

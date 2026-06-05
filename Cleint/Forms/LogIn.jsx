@@ -17,7 +17,7 @@ const LogIn = () => {
     e.preventDefault();
 
     try {
-      const res = await axios.post("http://localhost:5000/web/api/auth/login", logInData);
+      const res = await axios.post("https://car-e-commerce-website-production.up.railway.app/web/api/auth/login", logInData);
 
       if (res.data === "invalid Password" || !res.data.token) {
         setError("Invalid email or password");

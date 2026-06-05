@@ -22,7 +22,7 @@ const ItemDetails = () => {
     const cartItem = { productId: item._id }
     
     // Fixed: currentToken ko ab variable ki tarah bheja hai, function () ki tarah nahi
-    axios.post('http://localhost:5000/web/api/auth/addtocart', cartItem, {
+    axios.post('https://car-e-commerce-website-production.up.railway.app/web/api/auth/addtocart', cartItem, {
       headers: { Authorization: `Bearer ${currentToken}` }
     })
       .then((res) => console.log(res.data))
@@ -31,7 +31,7 @@ const ItemDetails = () => {
 
   // GET PRODUCT DETAILS (ON LOAD)
   useEffect(() => {
-    axios.get(`http://localhost:5000/web/api/products/product/${id}`)
+    axios.get(`https://car-e-commerce-website-production.up.railway.app/web/api/products/product/${id}`)
       .then((res) => {
         setItem(res.data.product)
         console.log(res.data.product)
