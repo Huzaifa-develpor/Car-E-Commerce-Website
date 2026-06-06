@@ -50,26 +50,10 @@ export default function Dashboard() {
   }, []);
 
   const statsCards = [
-    {
-      label: "Total Revenue",
-      value: `Rs ${stats.totalRevenue.toLocaleString()}`,
-      wide: true,
-    },
-    {
-      label: "Total Orders",
-      value: stats.totalOrders,
-      wide: false,
-    },
-    {
-      label: "Total Users",
-      value: stats.totalUsers,
-      wide: false,
-    },
-    {
-      label: "Pending Orders",
-      value: stats.pendingOrders,
-      wide: false,
-    },
+    { label: "Total Revenue", value: `Rs ${stats.totalRevenue.toLocaleString()}`, isRevenue: true },
+    { label: "Total Orders", value: stats.totalOrders, isRevenue: false },
+    { label: "Total Users", value: stats.totalUsers, isRevenue: false },
+    { label: "Pending Orders", value: stats.pendingOrders, isRevenue: false },
   ];
 
   return (
@@ -81,35 +65,19 @@ export default function Dashboard() {
         <p className="text-sm text-gray-500 mt-1">Overview of your system</p>
       </div>
 
-      {/* Stats — mobile: Revenue full width, baaki 3 neeche 2+1 */}
+      {/* Stats */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-
-        {/* Total Revenue — mobile pe full width */}
-        <div className="col-span-2 lg:col-span-1 bg-white border border-gray-200 rounded-2xl p-5 shadow-sm hover:shadow-md transition">
-          <p className="text-sm text-gray-500">Total Revenue</p>
-          <h3 className="text-2xl font-bold text-gray-900 mt-2 break-words">
-            {`Rs ${stats.totalRevenue.toLocaleString()}`}
-          </h3>
-        </div>
-
-        {/* Total Orders */}
-        <div className="bg-white border border-gray-200 rounded-2xl p-5 shadow-sm hover:shadow-md transition">
-          <p className="text-sm text-gray-500">Total Orders</p>
-          <h3 className="text-2xl font-bold text-gray-900 mt-2">{stats.totalOrders}</h3>
-        </div>
-
-        {/* Total Users */}
-        <div className="bg-white border border-gray-200 rounded-2xl p-5 shadow-sm hover:shadow-md transition">
-          <p className="text-sm text-gray-500">Total Users</p>
-          <h3 className="text-2xl font-bold text-gray-900 mt-2">{stats.totalUsers}</h3>
-        </div>
-
-        {/* Pending Orders */}
-        <div className="bg-white border border-gray-200 rounded-2xl p-5 shadow-sm hover:shadow-md transition">
-          <p className="text-sm text-gray-500">Pending Orders</p>
-          <h3 className="text-2xl font-bold text-gray-900 mt-2">{stats.pendingOrders}</h3>
-        </div>
-
+        {statsCards.map((item) => (
+          <div
+            key={item.label}
+            className="bg-white border border-gray-200 rounded-2xl p-5 shadow-sm hover:shadow-md transition"
+          >
+            <p className="text-sm text-gray-500">{item.label}</p>
+            <h3 className={`font-bold text-gray-900 mt-2 ${item.isRevenue ? "text-lg md:text-2xl" : "text-2xl"}`}>
+              {item.value}
+            </h3>
+          </div>
+        ))}
       </div>
 
       {/* Recent Orders */}
@@ -123,7 +91,6 @@ export default function Dashboard() {
         <div className="flex flex-col gap-3 md:hidden">
           {orders.map((o, index) => (
             <div key={o._id} className="border border-gray-100 rounded-xl p-4">
-
               <div className="flex justify-between items-center">
                 <div>
                   <h4 className="font-semibold text-gray-800">{o.userName}</h4>
@@ -133,12 +100,10 @@ export default function Dashboard() {
                   {o.status}
                 </span>
               </div>
-
               <div className="flex justify-between items-center mt-3">
                 <p className="text-sm text-gray-400">#{index + 1}</p>
                 <p className="font-bold text-gray-800">{o.totalPrice}</p>
               </div>
-
             </div>
           ))}
         </div>
