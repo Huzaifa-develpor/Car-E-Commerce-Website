@@ -42,7 +42,6 @@ const Cart = () => {
     fetchCartItems();
   }, [navigate]);
 
-  // Loading
   if (loading) {
     return (
       <div className="flex justify-center items-center h-screen bg-[#F8F7F4]">
@@ -82,7 +81,6 @@ const Cart = () => {
 
   return (
     <>
-
       {/* ── Navbar ── */}
       <div className="bg-[#111111] px-6 md:px-10 h-16 flex items-center justify-between border-b border-white/[0.06]">
         <p className="font-['Syne'] font-extrabold text-xl text-white tracking-tight shrink-0">
@@ -115,40 +113,55 @@ const Cart = () => {
 
           <div className="flex flex-col gap-4">
             {cartItems.map((item) => (
-
               <div
                 key={item._id}
-                className="bg-white border border-black/[0.07] rounded-2xl overflow-hidden hover:border-red-600/30 hover:shadow-md transition-all"
+                className="bg-white border border-black/[0.07] rounded-2xl overflow-hidden hover:border-red-600/30 transition-all"
               >
-                <div className="grid grid-cols-1 md:grid-cols-12">
+
+                {/* ── Top row: Image + Details ── */}
+                <div className="grid grid-cols-[110px_1fr] md:grid-cols-12 min-h-[130px] md:min-h-0">
 
                   {/* Image */}
-                  <div className="md:col-span-3 bg-[#F8F7F4] border-b md:border-b-0 md:border-r border-black/[0.06] flex items-center justify-center p-6 min-h-[160px]">
+                  <div className="bg-[#F8F7F4] border-r border-black/[0.06] flex items-center justify-center p-3 md:p-6 md:col-span-3">
                     <img
-                      className="h-36 md:h-44 object-contain"
+                      className="h-20 md:h-44 w-full object-contain"
                       src={item.thumbnail}
                       alt={item.carName}
                     />
                   </div>
 
                   {/* Details */}
-                  <div className="md:col-span-6 p-5 md:p-6 flex flex-col justify-center gap-2">
-                    <h2 className="font-['Syne'] font-bold text-xl md:text-2xl text-[#111111] tracking-tight leading-tight">
+                  <div className="p-3 md:p-6 flex flex-col justify-center gap-1.5 md:gap-2 md:col-span-6">
+                    <h2 className="font-['Syne'] font-bold text-[15px] md:text-2xl text-[#111111] tracking-tight leading-tight">
                       {item.carName}
                     </h2>
-                    <p className="text-sm text-[#6B6B6B] font-medium">
+                    <p className="text-xs md:text-sm text-[#6B6B6B] font-medium">
                       {item.title}
                     </p>
-                    <p className="text-sm text-[#6B6B6B] leading-relaxed line-clamp-2">
+
+                    {/* Price + badges — mobile only */}
+                    <p className="font-['Syne'] font-bold text-[16px] text-red-600 md:hidden">
+                      Rs. {item.price}
+                    </p>
+                    <div className="flex gap-1.5 flex-wrap md:hidden">
+                      <span className="text-[11px] text-[#6B6B6B] bg-black/[0.04] px-2 py-0.5 rounded">
+                        {item.year}
+                      </span>
+                      <span className="text-[11px] text-[#6B6B6B] bg-black/[0.04] px-2 py-0.5 rounded">
+                        {item.mileage} km
+                      </span>
+                    </div>
+
+                    {/* Description — desktop only */}
+                    <p className="hidden md:block text-sm text-[#6B6B6B] leading-relaxed line-clamp-2">
                       {item.description}
                     </p>
                   </div>
 
-                  {/* Price + Buttons */}
-                  <div className="md:col-span-3 border-t md:border-t-0 md:border-l border-black/[0.06] p-5 md:p-6 flex flex-col justify-center gap-4">
-
+                  {/* Price + Buttons — desktop only */}
+                  <div className="hidden md:flex md:col-span-3 border-l border-black/[0.06] p-6 flex-col justify-center gap-4">
                     <div>
-                      <p className="font-['Syne'] font-bold text-xl md:text-2xl text-red-600">
+                      <p className="font-['Syne'] font-bold text-2xl text-red-600">
                         Rs. {item.price}
                       </p>
                       <div className="flex gap-2 mt-2">
@@ -160,7 +173,6 @@ const Cart = () => {
                         </span>
                       </div>
                     </div>
-
                     <div className="flex flex-col gap-2">
                       <button
                         onClick={() => getOrder(item._id)}
@@ -175,12 +187,27 @@ const Cart = () => {
                         Remove
                       </button>
                     </div>
-
                   </div>
 
                 </div>
-              </div>
 
+                {/* ── Bottom bar: Buttons — mobile only ── */}
+                <div className="md:hidden border-t border-black/[0.06] px-3 py-2.5 grid grid-cols-2 gap-2">
+                  <button
+                    onClick={() => getOrder(item._id)}
+                    className="bg-red-600 hover:bg-red-700 text-white text-sm font-medium font-['DM_Sans'] py-2.5 rounded-lg transition"
+                  >
+                    Buy Now
+                  </button>
+                  <button
+                    onClick={() => deleteItem(item._id)}
+                    className="bg-transparent hover:bg-red-50 text-red-600 text-sm font-medium font-['DM_Sans'] py-2.5 rounded-lg border border-red-200 hover:border-red-400 transition"
+                  >
+                    Remove
+                  </button>
+                </div>
+
+              </div>
             ))}
           </div>
 
@@ -210,7 +237,6 @@ const Cart = () => {
       </div>
 
       <Footer />
-
     </>
   );
 };

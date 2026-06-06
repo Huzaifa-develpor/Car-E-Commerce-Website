@@ -8,6 +8,7 @@ const CategoryItems = () => {
   const { name } = useParams();
   const navigate = useNavigate();
   const [categoryItems, setCategoryItems] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     axios.get(`https://car-e-commerce-website-production.up.railway.app/web/api/products/category/${name}`)
@@ -16,10 +17,28 @@ const CategoryItems = () => {
       })
       .catch((err) => {
         console.log(err);
+      })
+      .finally(() => {
+        setLoading(false);
       });
   }, [name]);
 
   const brandName = name?.charAt(0).toUpperCase() + name?.slice(1);
+
+  // Loading state
+  if (loading) {
+    return (
+      <>
+        <Navbar />
+        <div className="flex justify-center items-center h-screen bg-[#F8F7F4]">
+          <div className="flex flex-col items-center gap-3">
+            <div className="w-8 h-8 border-2 border-red-600 border-t-transparent rounded-full animate-spin" />
+            <p className="text-sm text-[#6B6B6B] font-['DM_Sans']">Loading cars…</p>
+          </div>
+        </div>
+      </>
+    );
+  }
 
   return (
     <>

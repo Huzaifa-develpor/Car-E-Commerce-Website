@@ -8,20 +8,15 @@ const ItemDetails = () => {
   const { id } = useParams()
   const navigate = useNavigate()
   const [item, setItem] = useState(null)
+  const [loading, setLoading] = useState(true)
 
-  // ADD TO CART FUNCTION
   const addToCart = () => {
-    // Button click hotey hi fresh token check karo
     const currentToken = localStorage.getItem('token')
-
     if (!currentToken) {
       navigate('/login', { state: { from: { pathname: `/product/${id}` } } })
       return
     }
-
     const cartItem = { productId: item._id }
-    
-    // Fixed: currentToken ko ab variable ki tarah bheja hai, function () ki tarah nahi
     axios.post('https://car-e-commerce-website-production.up.railway.app/web/api/auth/addtocart', cartItem, {
       headers: { Authorization: `Bearer ${currentToken}` }
     })
@@ -29,7 +24,6 @@ const ItemDetails = () => {
       .catch((err) => console.log(err))
   }
 
-  // GET PRODUCT DETAILS (ON LOAD)
   useEffect(() => {
     axios.get(`https://car-e-commerce-website-production.up.railway.app/web/api/products/product/${id}`)
       .then((res) => {
@@ -37,19 +31,31 @@ const ItemDetails = () => {
         console.log(res.data.product)
       })
       .catch((err) => console.log(err))
+      .finally(() => setLoading(false))
   }, [id])
 
-  // BUY NOW / GET ORDER FUNCTION
   const getOrder = async () => {
-    // Click hotey hi fresh token check karo
     const currentToken = localStorage.getItem('token')
-
     if (!currentToken) {
       navigate('/login', { state: { from: { pathname: `/product/${id}` } } })
       return
     }
-    
     navigate(`/order?productId=${item._id}`, { state: { type: "single" } })
+  }
+
+  // Loading
+  if (loading) {
+    return (
+      <>
+        <Navbar />
+        <div className="flex justify-center items-center h-screen bg-[#F8F7F4]">
+          <div className="flex flex-col items-center gap-3">
+            <div className="w-8 h-8 border-2 border-red-600 border-t-transparent rounded-full animate-spin" />
+            <p className="text-sm text-[#6B6B6B] font-['DM_Sans']">Loading car details…</p>
+          </div>
+        </div>
+      </>
+    )
   }
 
   return (
