@@ -56,8 +56,8 @@ export default function Orders() {
       {/* Title */}
       <h2 className="text-xl font-semibold text-gray-800">Orders</h2>
 
-      {/* Filter Tabs — horizontal scroll on mobile */}
-      <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-hide">
+      {/* Filter Tabs — wrap on mobile */}
+      <div className="flex gap-2 flex-wrap">
         {statusOptions.map((s) => {
           const count = s === "all"
             ? (orders || []).length
@@ -66,7 +66,7 @@ export default function Orders() {
             <button
               key={s}
               onClick={() => setFilter(s)}
-              className={`text-xs px-3 py-1.5 rounded-full border font-medium capitalize transition-colors whitespace-nowrap shrink-0
+              className={`text-xs px-3 py-1.5 rounded-full border font-medium capitalize transition-colors whitespace-nowrap
                 ${filter === s
                   ? "bg-gray-900 text-white border-gray-900"
                   : "bg-white text-gray-500 border-gray-200 hover:bg-gray-50"}`}
