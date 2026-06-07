@@ -32,8 +32,6 @@ const LogIn = () => {
         return;
       }
 
-      // Agar kisi protected page se aaya tha → wapas wahan bhejo
-      // Warna → home
       const from = location.state?.from?.pathname || "/";
       navigate(from, { replace: true });
 

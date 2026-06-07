@@ -60,7 +60,7 @@ const HeroSection = () => {
       {/* Right — Image */}
       <div className="relative z-10 w-full md:w-1/2 hidden md:flex justify-center">
         <img
-          src="Cars Image.png"
+          src="CarsImage.png"
           alt="Car"
           className="w-full max-w-lg object-contain drop-shadow-2xl"
         />

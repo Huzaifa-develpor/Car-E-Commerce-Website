@@ -47,7 +47,7 @@ export default function AdminPanel() {
 
         {/* Logo */}
         <div className="h-14 flex items-center px-5 border-b border-gray-100">
-          <span className="text-lg font-semibold text-gray-800">🛒 CarZone</span>
+          <span className="text-lg font-semibold text-gray-800">Admin Panel</span>
         </div>
 
         {/* Nav */}

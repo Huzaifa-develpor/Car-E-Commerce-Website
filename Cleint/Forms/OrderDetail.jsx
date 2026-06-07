@@ -16,10 +16,8 @@ const OrderDetail = () => {
     paymentMethod: "",
   });
 
-  // Modal ko show/hide karne ke liye state
   const [showSuccessModal, setShowSuccessModal] = useState(false);
 
-  // Token guard — agar login nahi to login page pe bhejo
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token) {
@@ -73,16 +71,15 @@ const OrderDetail = () => {
         } else {
           alert("Something went wrong. Please try again later.");
         }
-      }) // <-- Fixed bracket here
+      }) 
       .catch((error) => {
         console.error("Error placing order:", error.response?.data || error.message);
       });
   };
 
-  // Modal ka OK button click handler
   const handleModalClose = () => {
     setShowSuccessModal(false);
-    navigate("/"); // User ko home page pe le jayega
+    navigate("/");
   };
 
   return (
@@ -164,10 +161,7 @@ const OrderDetail = () => {
         </div>
       </div>
 
-      {/* ========================================== */}
-      {/* CUSTOM ORDER SUCCESS POPUP (MODAL)         */}
-      {/* ========================================== */}
-      {/* Fixed: Extra curly bracket removed from here */}
+    
 
       {showSuccessModal && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50 animate-fade-in">
