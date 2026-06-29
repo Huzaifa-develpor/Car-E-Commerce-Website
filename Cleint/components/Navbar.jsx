@@ -1,8 +1,23 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { HiOutlineShoppingCart } from "react-icons/hi";
 import SearchBar from "./SearchBar";
 
 export default function Navbar() {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleCartClick = (e) => {
+    e.preventDefault();
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      navigate("/login", { state: { from: location } });
+      return;
+    }
+
+    navigate("/cart");
+  };
+
   return (
     <nav className="bg-[#111111] text-white sticky top-0 z-50 border-b border-white/[0.06]">
 
@@ -21,13 +36,13 @@ export default function Navbar() {
 
         {/* Right actions */}
         <div className="flex items-center gap-2 shrink-0">
-          <Link
-            to="/cart"
+          <button
+            onClick={handleCartClick}
             className="w-8 h-8 flex items-center justify-center rounded-lg bg-white/[0.07] border border-white/10 hover:bg-white/[0.13] transition"
             aria-label="Cart"
           >
             <HiOutlineShoppingCart size={16} />
-          </Link>
+          </button>
 
           <Link to="/login">
             <button className="text-xs font-medium font-['DM_Sans'] px-3 py-1.5 rounded-lg border border-white/20 hover:bg-white/[0.08] transition">

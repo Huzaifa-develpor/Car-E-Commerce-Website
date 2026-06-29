@@ -9,6 +9,7 @@ import ListProducts from '../components/ListProducts'
 import OrderDetail from '../Forms/OrderDetail'
 import Explore from '../components/Explore'
 import ProtectedAdmin from './ProtectedAdmin'
+import ProtectedRoute from './ProtectedRoute'
 import AdminPanel from '../components/adminComponents/AdminPanel'
 
 const AppRoutes = () => {
@@ -17,9 +18,17 @@ const AppRoutes = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/item/:id" element={<ItemDetails />} />
-        <Route path="/cart" element={<Cart />} />
+        <Route path="/cart" element={
+          <ProtectedRoute>
+            <Cart />
+          </ProtectedRoute>
+        } />
         <Route path="/login" element={<LogIn/>} />
-        <Route path="/order" element={<OrderDetail/>} />
+        <Route path="/order" element={
+          <ProtectedRoute>
+            <OrderDetail />
+          </ProtectedRoute>
+        } />
         <Route path="/categories/:name" element={<CategoryItems/>} />
         <Route path="/signup" element={<SignUp/>} />
         <Route path="/search/:model" element={<ListProducts/>} />

@@ -10,7 +10,7 @@ const orderSchema= new mongoose.Schema({
         price:Number
     }],
     address:String,
-    phoneNo:Number,
+    phoneNo:String,
     totalPrice:Number,
     paymentMethod:String,
     status:{

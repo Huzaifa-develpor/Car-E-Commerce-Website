@@ -29,17 +29,31 @@ const ListProducts = () => {
   }
 
   const addToCart = async (id) => {
+    const currentToken = localStorage.getItem('token')
+
+    if (!currentToken) {
+      navigate('/login', { state: { from: { pathname: `/search/${model}` } } })
+      return
+    }
+
     const cartItem = { productId: id }
     axios.post(
       'https://car-e-commerce-website-production.up.railway.app/web/api/auth/addtocart',
       cartItem,
-      { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } }
+      { headers: { Authorization: `Bearer ${currentToken}` } }
     )
       .then((res) => console.log(res.data))
       .catch((err) => console.log(err))
   }
 
   const getOrder = (id) => {
+    const currentToken = localStorage.getItem('token')
+
+    if (!currentToken) {
+      navigate('/login', { state: { from: { pathname: `/search/${model}` } } })
+      return
+    }
+
     navigate(`/order?productId=${id}`, { state: { type: "single" } })
   }
 
