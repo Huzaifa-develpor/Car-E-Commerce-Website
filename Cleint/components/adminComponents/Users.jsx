@@ -10,7 +10,7 @@ export default function Users() {
 
   // Fetch users
   useEffect(() => {
-    axios.get("https://car-e-commerce-website-production.up.railway.app/web/api/auth/viewusers", {
+    axios.get("https://car-e-commerce-website-production-f1fd.up.railway.app/web/api/auth/viewusers", {
       headers: {
         Authorization: `Bearer ${token}`
       }
@@ -33,7 +33,7 @@ export default function Users() {
   function removeUser(id) {
     if (window.confirm("Do you want to remove this user?")) {
 
-      axios.delete(`https://car-e-commerce-website-production.up.railway.app/web/api/auth/deleteuser/${id}`, {
+      axios.delete(`https://car-e-commerce-website-production-f1fd.up.railway.app/web/api/auth/deleteuser/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -54,7 +54,7 @@ export default function Users() {
       currentStatus === "active" ? "blocked" : "active";
 
     axios.put(
-      `https://car-e-commerce-website-production.up.railway.app/web/api/auth/updstatus/${id}`,
+      `https://car-e-commerce-website-production-f1fd.up.railway.app/web/api/auth/updstatus/${id}`,
       { status: newStatus },
       {
         headers: {

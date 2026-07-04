@@ -15,7 +15,7 @@ export default function Products() {
   const [errors, setErrors]     = useState({});
 
   useEffect(()=>{
-    axios.get("https://car-e-commerce-website-production.up.railway.app/web/api/products/view")
+    axios.get("https://car-e-commerce-website-production-f1fd.up.railway.app/web/api/products/view")
     .then((res)=>{
       setProducts(res.data.cars)
     }).catch((err)=>{
@@ -71,7 +71,7 @@ function openEdit(p) {
     };
 
     if (editId) {
-      await axios.put(`https://car-e-commerce-website-production.up.railway.app/web/api/products/update/${editId}`, payload)
+      await axios.put(`https://car-e-commerce-website-production-f1fd.up.railway.app/web/api/products/update/${editId}`, payload)
       .then(()=>{
         setProducts((prev)=>{
           setProducts(prev.map((p) => p._id === editId ? { ...p, ...form } : p))
@@ -84,7 +84,7 @@ function openEdit(p) {
 })
     } else {
       // Add
-        await axios.post('https://car-e-commerce-website-production.up.railway.app/web/api/products/additems',payload)
+        await axios.post('https://car-e-commerce-website-production-f1fd.up.railway.app/web/api/products/additems',payload)
       .then((res)=>{
         const newCar = res.data.car;
         if(!newCar){
@@ -103,7 +103,7 @@ function openEdit(p) {
   // Delete
   async function handleDelete(id) {
     if (window.confirm("Do you want to delete this product?")) {
-      await axios.delete(`https://car-e-commerce-website-production.up.railway.app/web/api/products/delete/${id}`)
+      await axios.delete(`https://car-e-commerce-website-production-f1fd.up.railway.app/web/api/products/delete/${id}`)
       .then(()=>{
       setProducts(products.filter((p) => p._id !== id));
       }).catch((err)=>{
@@ -115,7 +115,7 @@ function openEdit(p) {
 
   // Toggle status
   async function toggleStatus(id) {
-    await axios.put(`https://car-e-commerce-website-production.up.railway.app/web/api/products/updatestatus/${id}`)
+    await axios.put(`https://car-e-commerce-website-production-f1fd.up.railway.app/web/api/products/updatestatus/${id}`)
     .then((res)=>{
       const updatedStatus = res.data.newStatus;
       setProducts(

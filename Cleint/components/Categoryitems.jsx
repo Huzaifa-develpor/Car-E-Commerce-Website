@@ -11,7 +11,7 @@ const CategoryItems = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get(`https://car-e-commerce-website-production.up.railway.app/web/api/products/category/${name}`)
+    axios.get(`https://car-e-commerce-website-production-f1fd.up.railway.app/web/api/products/category/${name}`)
       .then((res) => {
         setCategoryItems(res.data.categoryItems);
       })

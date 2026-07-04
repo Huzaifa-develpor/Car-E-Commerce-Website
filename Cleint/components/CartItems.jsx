@@ -18,7 +18,7 @@ const CartItems = () => {
   }
 
         const response = await axios.get(
-          'https://car-e-commerce-website-production.up.railway.app/web/api/auth/getcart',
+          'https://car-e-commerce-website-production-f1fd.up.railway.app/web/api/auth/getcart',
           {
             headers: {
               Authorization: `Bearer ${token}`
@@ -54,7 +54,7 @@ const deleteItem = async (productId) => {
     const token = localStorage.getItem('token');
 
     await axios.delete(
-      `https://car-e-commerce-website-production.up.railway.app/web/api/auth/removeitem/${productId}`,
+      `https://car-e-commerce-website-production-f1fd.up.railway.app/web/api/auth/removeitem/${productId}`,
       {
         headers: {
           Authorization: `Bearer ${token}`

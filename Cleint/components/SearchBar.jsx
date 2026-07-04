@@ -15,7 +15,7 @@ const SearchBar = () => {
     }
     try {
       const res = await axios.get(
-        `https://car-e-commerce-website-production.up.railway.app/web/api/products/search/${searchTerm}`
+        `https://car-e-commerce-website-production-f1fd.up.railway.app/web/api/products/search/${searchTerm}`
       );
       setSearchResult(res.data.cars || []);
     } catch (err) {

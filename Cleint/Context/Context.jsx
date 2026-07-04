@@ -5,7 +5,7 @@ const Context =({children})=>{
         const [carList,setCarList]= useState([])
 
         useEffect(() => {
-           axios.get('https://car-e-commerce-website-production.up.railway.app/web/api/products/view')
+           axios.get('https://car-e-commerce-website-production-f1fd.up.railway.app/web/api/products/view')
            .then((res)=>{
             setCarList(res.data.cars)
            })

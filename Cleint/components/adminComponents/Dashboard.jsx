@@ -22,7 +22,7 @@ export default function Dashboard() {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.get(
-        "https://car-e-commerce-website-production.up.railway.app/web/api/auth/dashboardstats",
+        "https://car-e-commerce-website-production-f1fd.up.railway.app/web/api/auth/dashboardstats",
         { headers: { Authorization: `Bearer ${token}` } }
       );
       setStats(response.data.stats);
@@ -35,7 +35,7 @@ export default function Dashboard() {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.get(
-        "https://car-e-commerce-website-production.up.railway.app/web/api/auth/vieworders",
+        "https://car-e-commerce-website-production-f1fd.up.railway.app/web/api/auth/vieworders",
         { headers: { Authorization: `Bearer ${token}` } }
       );
       setOrders(response.data.orders);

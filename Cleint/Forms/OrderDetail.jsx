@@ -53,7 +53,7 @@ const OrderDetail = () => {
 
     await axios
       .post(
-        `https://car-e-commerce-website-production.up.railway.app/web/api/auth/order`,
+        `https://car-e-commerce-website-production-f1fd.up.railway.app/web/api/auth/order`,
         {
           type,
           productId: type === "single" ? productId : undefined,
