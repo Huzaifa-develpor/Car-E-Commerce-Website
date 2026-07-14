@@ -41,7 +41,7 @@ const placeOrder = async (req, res) => {
         price: product.price
       });
 
-      // ❌ IMPORTANT: CART IS NOT TOUCHED
+    
     }
 
     // ================= CART ORDER =================
