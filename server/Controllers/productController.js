@@ -26,6 +26,8 @@ const viewProduct = async (req, res) => {
     })
 }
 
+// For Admin use
+
 const deleteProduct = async (req, res) => {
     const id = req.params.id
         await carModel.deleteOne({
