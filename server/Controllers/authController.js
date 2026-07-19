@@ -14,7 +14,7 @@ const registerUser= async (req, res)=>{
     const addUser=await authModel.create(userData)
     res.send({
         status: 200,
-        message: "User registered",
+        message: "User registered Successfully",
         data: addUser
     })
 }
